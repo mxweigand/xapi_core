@@ -1,0 +1,50 @@
+// this file is only documentation
+// actual configurations have to be placed in config.json (not .jsonc)
+{
+    // modes 
+    // server - server is created, listening on port main-port
+    // query - single query is fired (defined by query-txt)
+    // materialize - data in graph is materialized
+    "mode": "server",
+
+    // static means that RDFXML file is loaded, no plugins are accessed
+    "static-graph": false,
+
+    // port - has to be defined, if mode=server
+    "main-port": 3030,
+
+    // query text file and result text file - have to be defined if mode=query
+    "query-txt": "resources/query.txt",
+    "result-txt": "resources/result.txt",
+
+    // path to target RDFXML file - has to be defined, if mode=materialize
+    "mat-rdf": "resources/materialized-graph.rdf",
+
+    // path to source RDFXML file - has to be defined, if static-graph=true
+    "load-rdf": "resources/input-graph.rdf", 
+
+    // array of plugins - has to contain at least one plugin if static-graph=false
+    "plugins":  
+    [
+        {
+            "plugin-name": "cameo",
+            "plugin-port": 8080,
+            "plugin-prefix-mappings":
+            [
+                { 
+                    "uri": "http://www.hsu-ifa.de/ontologies/cameo#",
+                    "prefix": "cameo"
+                }                
+                // add uris to be prefixed here
+                // { 
+                //     "uri": "http://www.hsu-ifa.de/ontologies/more-cameo#",
+                //     "prefix": "more-cameo"
+                // }
+            ]
+        }
+        // {
+        //     "plugin-name": "another-plugin",
+        //     "plugin-port": 8081
+        // }
+    ]
+}

@@ -1,0 +1,23 @@
+{
+    "mode": "server",
+    "static-graph": false,
+    "main-port": 3030,
+    "query-txt": "resources/query.txt",
+    "result-txt": "resources/result.txt",
+    "mat-rdf": "resources/materialized-graph.rdf",
+    "load-rdf": "resources/input-graph.rdf", 
+    "plugins":  
+    [
+        {
+            "plugin-name": "cameo",
+            "plugin-port": 8080,
+            "plugin-prefix-mappings":
+            [
+                { 
+                    "uri": "http://www.hsu-ifa.de/ontologies/cameo#",
+                    "prefix": "cameo"
+                } 
+            ]
+        }
+    ]
+}
